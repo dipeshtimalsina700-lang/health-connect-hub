@@ -66,7 +66,7 @@ const SymptomChecker = () => {
             >
               <Heart className="h-8 w-8 text-primary" />
               <span className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                HealthConnect
+                CareSync
               </span>
             </div>
             <div className="flex items-center gap-4">
