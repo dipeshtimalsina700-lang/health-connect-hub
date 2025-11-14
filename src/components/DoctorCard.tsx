@@ -25,12 +25,14 @@ export const DoctorCard = ({ doctor }: DoctorCardProps) => {
         <div className="space-y-3">
           <div>
             <h3 className="text-xl font-semibold text-foreground">{doctor.name}</h3>
-            <p className="text-sm text-muted-foreground">{doctor.qualifications}</p>
+            <p className="text-sm text-muted-foreground break-words line-clamp-2">{doctor.qualifications}</p>
           </div>
           
-          <Badge variant="secondary" className="bg-secondary/10 text-secondary-foreground hover:bg-secondary/20">
-            {doctor.specialization}
-          </Badge>
+          <div>
+            <Badge variant="secondary" className="bg-secondary/10 text-secondary-foreground hover:bg-secondary/20">
+              {doctor.specialization}
+            </Badge>
+          </div>
           
           <div className="flex items-center gap-4 text-sm">
             <div className="flex items-center gap-1">
