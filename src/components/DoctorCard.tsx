@@ -5,6 +5,18 @@ import { Button } from "@/components/ui/button";
 import { Star, MapPin, Clock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
+const specialtyColorMap: Record<string, "cardiology" | "orthopedic" | "dermatology" | "neurology" | "ent" | "gastroenterology" | "ophthalmology" | "gynecology" | "pulmonology" | "secondary"> = {
+  Cardiology: "cardiology",
+  Orthopedics: "orthopedic",
+  Dermatology: "dermatology",
+  Neurology: "neurology",
+  ENT: "ent",
+  Gastroenterology: "gastroenterology",
+  Ophthalmology: "ophthalmology",
+  Gynecology: "gynecology",
+  Pulmonology: "pulmonology",
+};
+
 interface DoctorCardProps {
   doctor: Doctor;
 }
@@ -29,7 +41,10 @@ export const DoctorCard = ({ doctor }: DoctorCardProps) => {
           </div>
           
           <div>
-            <Badge variant="secondary" className="bg-gradient-to-r from-primary/10 to-secondary/10 text-primary border-primary/20">
+            <Badge 
+              variant={specialtyColorMap[doctor.specialization] || "secondary"}
+              className="text-xs"
+            >
               {doctor.specialization}
             </Badge>
           </div>

@@ -33,6 +33,33 @@ All colors MUST be HSL.
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
+    --cardiology: 0 72% 51%;
+    --cardiology-foreground: 0 0% 100%;
+    
+    --orthopedic: 39 96% 50%;
+    --orthopedic-foreground: 0 0% 100%;
+    
+    --dermatology: 291 64% 42%;
+    --dermatology-foreground: 0 0% 100%;
+    
+    --neurology: 217 91% 60%;
+    --neurology-foreground: 0 0% 100%;
+    
+    --ent: 162 63% 41%;
+    --ent-foreground: 0 0% 100%;
+    
+    --gastroenterology: 28 80% 52%;
+    --gastroenterology-foreground: 0 0% 100%;
+    
+    --ophthalmology: 200 98% 39%;
+    --ophthalmology-foreground: 0 0% 100%;
+    
+    --gynecology: 340 82% 52%;
+    --gynecology-foreground: 0 0% 100%;
+    
+    --pulmonology: 187 71% 45%;
+    --pulmonology-foreground: 0 0% 100%;
+
     --border: 214 32% 91%;
     --input: 214 32% 91%;
     --ring: 200 98% 39%;
@@ -90,6 +117,33 @@ All colors MUST be HSL.
 
     --destructive: 0 75% 55%;
     --destructive-foreground: 0 0% 100%;
+
+    --cardiology: 0 72% 51%;
+    --cardiology-foreground: 0 0% 100%;
+    
+    --orthopedic: 39 96% 50%;
+    --orthopedic-foreground: 0 0% 100%;
+    
+    --dermatology: 291 64% 42%;
+    --dermatology-foreground: 0 0% 100%;
+    
+    --neurology: 217 91% 60%;
+    --neurology-foreground: 0 0% 100%;
+    
+    --ent: 162 63% 41%;
+    --ent-foreground: 0 0% 100%;
+    
+    --gastroenterology: 28 80% 52%;
+    --gastroenterology-foreground: 0 0% 100%;
+    
+    --ophthalmology: 200 98% 39%;
+    --ophthalmology-foreground: 0 0% 100%;
+    
+    --gynecology: 340 82% 52%;
+    --gynecology-foreground: 0 0% 100%;
+    
+    --pulmonology: 187 71% 45%;
+    --pulmonology-foreground: 0 0% 100%;
 
     --border: 217 33% 22%;
     --input: 217 33% 20%;
