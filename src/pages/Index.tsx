@@ -49,7 +49,7 @@ const Index = () => {
             <div className="flex items-center gap-2">
               <Heart className="h-8 w-8 text-primary" />
               <span className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                HealthConnect
+                CareSync
               </span>
             </div>
             <div className="flex items-center gap-4">
@@ -122,7 +122,7 @@ const Index = () => {
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Why Choose HealthConnect?</h2>
+            <h2 className="text-4xl font-bold mb-4">Why Choose CareSync?</h2>
             <p className="text-xl text-muted-foreground">
               Experience healthcare booking made simple and efficient
             </p>
@@ -153,7 +153,7 @@ const Index = () => {
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <h2 className="text-4xl font-bold">Ready to Get Started?</h2>
             <p className="text-xl text-muted-foreground">
-              Join thousands of patients who trust HealthConnect for their healthcare needs
+              Join thousands of patients who trust CareSync for their healthcare needs
             </p>
             <Button 
               size="lg"
@@ -169,7 +169,7 @@ const Index = () => {
       {/* Footer */}
       <footer className="border-t border-border/50 py-8 bg-card/50">
         <div className="container mx-auto px-4 text-center text-muted-foreground">
-          <p>&copy; 2025 HealthConnect. Your trusted healthcare partner.</p>
+          <p>&copy; 2025 CareSync. Your trusted healthcare partner.</p>
         </div>
       </footer>
     </div>
