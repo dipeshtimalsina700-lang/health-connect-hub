@@ -45,32 +45,15 @@ export const VoiceInput: React.FC<VoiceInputProps> = ({
         }
         setIsListening(false);
         setRetryCount(0);
-        toast({
-          title: "Success!",
-          description: "Voice input captured successfully.",
-        });
       };
 
       recognitionInstance.onerror = (event: any) => {
         console.error("Speech recognition error:", event.error);
         
-        // Handle network errors with retry
-        if (event.error === "network" && retryCount < 2) {
-          setRetryCount(prev => prev + 1);
-          toast({
-            title: "Retrying...",
-            description: `Network issue detected. Retrying (${retryCount + 1}/2)...`,
-          });
-          // Retry after a short delay
-          setTimeout(() => {
-            if (recognition && isListening) {
-              try {
-                recognition.start();
-              } catch (e) {
-                console.error("Retry failed:", e);
-              }
-            }
-          }, 1000);
+        // Silently ignore network errors and let user retry manually
+        if (event.error === "network") {
+          setIsListening(false);
+          setRetryCount(0);
           return;
         }
         
@@ -116,7 +99,7 @@ export const VoiceInput: React.FC<VoiceInputProps> = ({
 
       setRecognition(recognitionInstance);
     }
-  }, [onValueChange, toast, retryCount, recognition, isListening]);
+  }, []);
 
   const toggleListening = async () => {
     if (!recognition) {
