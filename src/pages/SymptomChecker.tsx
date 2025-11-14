@@ -2,9 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import { VoiceInput } from "@/components/ui/voice-input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Heart, ArrowLeft } from "lucide-react";
 import { mockDoctors } from "@/data/mockDoctors";
@@ -165,22 +164,22 @@ const SymptomChecker = () => {
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <Label htmlFor="name">Full Name *</Label>
-                    <Input
+                    <VoiceInput
                       id="name"
                       value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      placeholder="Enter your name"
+                      onValueChange={(value) => setFormData({...formData, name: value})}
+                      placeholder="Enter or speak your name"
                       required
                     />
                   </div>
                   <div>
                     <Label htmlFor="age">Age *</Label>
-                    <Input
+                    <VoiceInput
                       id="age"
                       type="number"
                       value={formData.age}
-                      onChange={(e) => setFormData({...formData, age: e.target.value})}
-                      placeholder="Enter your age"
+                      onValueChange={(value) => setFormData({...formData, age: value})}
+                      placeholder="Enter or speak your age"
                       required
                     />
                   </div>
@@ -205,22 +204,22 @@ const SymptomChecker = () => {
 
                 <div>
                   <Label htmlFor="address">Address</Label>
-                  <Input
+                  <VoiceInput
                     id="address"
                     value={formData.address}
-                    onChange={(e) => setFormData({...formData, address: e.target.value})}
-                    placeholder="Enter your address"
+                    onValueChange={(value) => setFormData({...formData, address: value})}
+                    placeholder="Enter or speak your address"
                   />
                 </div>
 
                 <div>
                   <Label htmlFor="symptoms">Describe Your Symptoms *</Label>
-                  <Textarea
+                  <VoiceInput
                     id="symptoms"
+                    multiline
                     value={formData.symptoms}
-                    onChange={(e) => setFormData({...formData, symptoms: e.target.value})}
-                    placeholder="Please describe your symptoms in detail (e.g., joint pain, skin rash, chest pain, etc.)"
-                    rows={6}
+                    onValueChange={(value) => setFormData({...formData, symptoms: value})}
+                    placeholder="E.g., I have a persistent headache and feel dizzy..."
                     required
                   />
                 </div>

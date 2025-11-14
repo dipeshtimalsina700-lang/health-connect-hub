@@ -48,6 +48,42 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        cardiology: {
+          DEFAULT: "hsl(var(--cardiology))",
+          foreground: "hsl(var(--cardiology-foreground))",
+        },
+        orthopedic: {
+          DEFAULT: "hsl(var(--orthopedic))",
+          foreground: "hsl(var(--orthopedic-foreground))",
+        },
+        dermatology: {
+          DEFAULT: "hsl(var(--dermatology))",
+          foreground: "hsl(var(--dermatology-foreground))",
+        },
+        neurology: {
+          DEFAULT: "hsl(var(--neurology))",
+          foreground: "hsl(var(--neurology-foreground))",
+        },
+        ent: {
+          DEFAULT: "hsl(var(--ent))",
+          foreground: "hsl(var(--ent-foreground))",
+        },
+        gastroenterology: {
+          DEFAULT: "hsl(var(--gastroenterology))",
+          foreground: "hsl(var(--gastroenterology-foreground))",
+        },
+        ophthalmology: {
+          DEFAULT: "hsl(var(--ophthalmology))",
+          foreground: "hsl(var(--ophthalmology-foreground))",
+        },
+        gynecology: {
+          DEFAULT: "hsl(var(--gynecology))",
+          foreground: "hsl(var(--gynecology-foreground))",
+        },
+        pulmonology: {
+          DEFAULT: "hsl(var(--pulmonology))",
+          foreground: "hsl(var(--pulmonology-foreground))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
