@@ -31,22 +31,79 @@ const SymptomChecker = () => {
       return;
     }
 
-    // Simple symptom matching logic
+    // Comprehensive symptom matching logic
     const symptomsLower = formData.symptoms.toLowerCase();
     let recommended = mockDoctors;
 
-    if (symptomsLower.includes("joint") || symptomsLower.includes("bone") || 
-        symptomsLower.includes("fracture") || symptomsLower.includes("pain")) {
-      recommended = mockDoctors.filter(d => d.specialization === "Orthopedic");
-    } else if (symptomsLower.includes("heart") || symptomsLower.includes("chest") || 
-               symptomsLower.includes("blood pressure")) {
+    // Cardiology - Heart related
+    if (symptomsLower.includes("heart") || symptomsLower.includes("chest pain") || 
+        symptomsLower.includes("blood pressure") || symptomsLower.includes("cardiac") ||
+        symptomsLower.includes("palpitation") || symptomsLower.includes("shortness of breath") ||
+        symptomsLower.includes("cholesterol")) {
       recommended = mockDoctors.filter(d => d.specialization === "Cardiology");
-    } else if (symptomsLower.includes("skin") || symptomsLower.includes("rash") || 
-               symptomsLower.includes("acne")) {
+    } 
+    // Orthopedic - Bone and joint related
+    else if (symptomsLower.includes("joint") || symptomsLower.includes("bone") || 
+        symptomsLower.includes("fracture") || symptomsLower.includes("back pain") ||
+        symptomsLower.includes("knee pain") || symptomsLower.includes("arthritis") ||
+        symptomsLower.includes("spine") || symptomsLower.includes("muscle pain") ||
+        symptomsLower.includes("sports injury")) {
+      recommended = mockDoctors.filter(d => d.specialization === "Orthopedic");
+    } 
+    // Dermatology - Skin related
+    else if (symptomsLower.includes("skin") || symptomsLower.includes("rash") || 
+        symptomsLower.includes("acne") || symptomsLower.includes("eczema") ||
+        symptomsLower.includes("allergy") || symptomsLower.includes("itching") ||
+        symptomsLower.includes("hair loss") || symptomsLower.includes("psoriasis")) {
       recommended = mockDoctors.filter(d => d.specialization === "Dermatology");
-    } else if (symptomsLower.includes("child") || symptomsLower.includes("baby") || 
-               symptomsLower.includes("kid")) {
+    } 
+    // Pediatrics - Child related
+    else if (symptomsLower.includes("child") || symptomsLower.includes("baby") || 
+        symptomsLower.includes("kid") || symptomsLower.includes("infant") ||
+        symptomsLower.includes("vaccination")) {
       recommended = mockDoctors.filter(d => d.specialization === "Pediatrics");
+    }
+    // ENT - Ear, Nose, Throat
+    else if (symptomsLower.includes("ear") || symptomsLower.includes("nose") || 
+        symptomsLower.includes("throat") || symptomsLower.includes("hearing") ||
+        symptomsLower.includes("sinus") || symptomsLower.includes("tonsil") ||
+        symptomsLower.includes("voice") || symptomsLower.includes("snoring")) {
+      recommended = mockDoctors.filter(d => d.specialization === "ENT");
+    }
+    // Neurology - Brain and nervous system
+    else if (symptomsLower.includes("headache") || symptomsLower.includes("migraine") || 
+        symptomsLower.includes("seizure") || symptomsLower.includes("epilepsy") ||
+        symptomsLower.includes("nerve") || symptomsLower.includes("paralysis") ||
+        symptomsLower.includes("tremor") || symptomsLower.includes("dizziness")) {
+      recommended = mockDoctors.filter(d => d.specialization === "Neurology");
+    }
+    // Gastroenterology - Digestive system
+    else if (symptomsLower.includes("stomach") || symptomsLower.includes("abdomen") || 
+        symptomsLower.includes("digestion") || symptomsLower.includes("liver") ||
+        symptomsLower.includes("constipation") || symptomsLower.includes("diarrhea") ||
+        symptomsLower.includes("acidity") || symptomsLower.includes("ulcer") ||
+        symptomsLower.includes("intestine")) {
+      recommended = mockDoctors.filter(d => d.specialization === "Gastroenterology");
+    }
+    // Ophthalmology - Eye related
+    else if (symptomsLower.includes("eye") || symptomsLower.includes("vision") || 
+        symptomsLower.includes("cataract") || symptomsLower.includes("glasses") ||
+        symptomsLower.includes("blind") || symptomsLower.includes("sight")) {
+      recommended = mockDoctors.filter(d => d.specialization === "Ophthalmology");
+    }
+    // Gynecology - Women's health
+    else if (symptomsLower.includes("pregnancy") || symptomsLower.includes("period") || 
+        symptomsLower.includes("menstrual") || symptomsLower.includes("gynec") ||
+        symptomsLower.includes("ovary") || symptomsLower.includes("uterus") ||
+        symptomsLower.includes("women") || symptomsLower.includes("female")) {
+      recommended = mockDoctors.filter(d => d.specialization === "Gynecology");
+    }
+    // Pulmonology - Respiratory/Lung related
+    else if (symptomsLower.includes("lung") || symptomsLower.includes("breathing") || 
+        symptomsLower.includes("asthma") || symptomsLower.includes("cough") ||
+        symptomsLower.includes("bronchitis") || symptomsLower.includes("pneumonia") ||
+        symptomsLower.includes("respiratory")) {
+      recommended = mockDoctors.filter(d => d.specialization === "Pulmonology");
     }
 
     setRecommendations(recommended.slice(0, 3));
