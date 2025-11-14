@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { VoiceInput } from "@/components/ui/voice-input";
 import { Heart, Star, MapPin, Clock, Calendar, ArrowLeft, CheckCircle, CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
 import { toast } from "sonner";
@@ -34,8 +35,16 @@ const DoctorProfile = () => {
   }
 
   const handleBooking = () => {
-    if (!patientName || !selectedDate || !selectedSchedule || !selectedTimeSlot) {
-      toast.error("Please fill in all fields");
+    if (!patientName) {
+      toast.error("Please enter patient name");
+      return;
+    }
+    if (!selectedDate) {
+      toast.error("Please select appointment date");
+      return;
+    }
+    if (selectedSchedule === null || !selectedTimeSlot) {
+      toast.error("Please select hospital and time slot first");
       return;
     }
 
@@ -217,10 +226,10 @@ const DoctorProfile = () => {
           <div className="space-y-4">
             <div>
               <Label htmlFor="patientName">Patient Name</Label>
-              <Input
+              <VoiceInput
                 id="patientName"
                 value={patientName}
-                onChange={(e) => setPatientName(e.target.value)}
+                onValueChange={setPatientName}
                 placeholder="Enter patient name"
               />
             </div>
