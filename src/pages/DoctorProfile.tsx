@@ -49,7 +49,7 @@ const DoctorProfile = () => {
     }
 
     const schedule = doctor.schedules[selectedSchedule];
-    const token = `TKN${Math.random().toString(36).substring(2, 9).toUpperCase()}`;
+    const token = Math.floor(100000 + Math.random() * 900000).toString();
     
     toast.success("Appointment booked successfully!");
     navigate(`/booking-confirmation/${token}`, {
