@@ -106,7 +106,7 @@ const BookingConfirmation = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Consultation Fee</p>
-                  <p className="font-semibold text-lg">${bookingData.fee}</p>
+                  <p className="font-semibold text-lg">Rs. {bookingData.fee}</p>
                 </div>
               </div>
 
