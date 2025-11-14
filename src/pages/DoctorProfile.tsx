@@ -148,7 +148,7 @@ const DoctorProfile = () => {
                           </div>
                         </div>
                         <Badge variant="outline" className="text-lg font-semibold">
-                          ${schedule.consultationFee}
+                          Rs. {schedule.consultationFee}
                         </Badge>
                       </div>
                       

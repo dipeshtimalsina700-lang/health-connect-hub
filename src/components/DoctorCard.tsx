@@ -47,6 +47,8 @@ export const DoctorCard = ({ doctor }: DoctorCardProps) => {
             <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
             <span>{doctor.schedules.length} hospital{doctor.schedules.length > 1 ? 's' : ''}</span>
           </div>
+          
+          <p className="text-sm text-muted-foreground">From Rs. {doctor.schedules[0].consultationFee}/consultation</p>
         </div>
       </CardContent>
       <CardFooter className="p-6 pt-0">

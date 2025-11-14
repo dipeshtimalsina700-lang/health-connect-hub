@@ -14,9 +14,9 @@ export const mockDoctors: Doctor[] = [
     schedules: [
       {
         hospitalId: "h1",
-        hospitalName: "City General Hospital",
-        hospitalAddress: "123 Main St, Downtown",
-        consultationFee: 150,
+        hospitalName: "Tribhuvan University Teaching Hospital",
+        hospitalAddress: "Maharajgunj, Kathmandu",
+        consultationFee: 1500,
         availableDays: ["Monday", "Wednesday", "Friday"],
         timeSlots: [
           { startTime: "09:00", endTime: "10:00", available: true },
@@ -27,9 +27,9 @@ export const mockDoctors: Doctor[] = [
       },
       {
         hospitalId: "h2",
-        hospitalName: "Sunrise Medical Center",
-        hospitalAddress: "456 Oak Avenue, Eastside",
-        consultationFee: 175,
+        hospitalName: "Grande International Hospital",
+        hospitalAddress: "Dhapasi, Kathmandu",
+        consultationFee: 2000,
         availableDays: ["Tuesday", "Thursday"],
         timeSlots: [
           { startTime: "10:00", endTime: "11:00", available: true },
@@ -52,9 +52,9 @@ export const mockDoctors: Doctor[] = [
     schedules: [
       {
         hospitalId: "h1",
-        hospitalName: "City General Hospital",
-        hospitalAddress: "123 Main St, Downtown",
-        consultationFee: 140,
+        hospitalName: "Tribhuvan University Teaching Hospital",
+        hospitalAddress: "Maharajgunj, Kathmandu",
+        consultationFee: 1400,
         availableDays: ["Monday", "Tuesday", "Thursday"],
         timeSlots: [
           { startTime: "08:00", endTime: "09:00", available: true },
@@ -77,9 +77,9 @@ export const mockDoctors: Doctor[] = [
     schedules: [
       {
         hospitalId: "h2",
-        hospitalName: "Sunrise Medical Center",
-        hospitalAddress: "456 Oak Avenue, Eastside",
-        consultationFee: 200,
+        hospitalName: "Grande International Hospital",
+        hospitalAddress: "Dhapasi, Kathmandu",
+        consultationFee: 2500,
         availableDays: ["Monday", "Wednesday", "Friday"],
         timeSlots: [
           { startTime: "09:00", endTime: "10:00", available: true },
@@ -90,9 +90,9 @@ export const mockDoctors: Doctor[] = [
       },
       {
         hospitalId: "h3",
-        hospitalName: "Memorial Hospital",
-        hospitalAddress: "789 Elm Street, Westside",
-        consultationFee: 220,
+        hospitalName: "Nepal Mediciti Hospital",
+        hospitalAddress: "Bhaisepati, Lalitpur",
+        consultationFee: 2800,
         availableDays: ["Tuesday", "Thursday"],
         timeSlots: [
           { startTime: "11:00", endTime: "12:00", available: true },
@@ -114,9 +114,9 @@ export const mockDoctors: Doctor[] = [
     schedules: [
       {
         hospitalId: "h3",
-        hospitalName: "Memorial Hospital",
-        hospitalAddress: "789 Elm Street, Westside",
-        consultationFee: 130,
+        hospitalName: "Nepal Mediciti Hospital",
+        hospitalAddress: "Bhaisepati, Lalitpur",
+        consultationFee: 1300,
         availableDays: ["Monday", "Wednesday", "Thursday", "Friday"],
         timeSlots: [
           { startTime: "10:00", endTime: "11:00", available: true },
@@ -140,9 +140,9 @@ export const mockDoctors: Doctor[] = [
     schedules: [
       {
         hospitalId: "h1",
-        hospitalName: "City General Hospital",
-        hospitalAddress: "123 Main St, Downtown",
-        consultationFee: 120,
+        hospitalName: "Tribhuvan University Teaching Hospital",
+        hospitalAddress: "Maharajgunj, Kathmandu",
+        consultationFee: 1200,
         availableDays: ["Tuesday", "Wednesday", "Friday"],
         timeSlots: [
           { startTime: "09:00", endTime: "10:00", available: true },
@@ -166,9 +166,9 @@ export const mockDoctors: Doctor[] = [
     schedules: [
       {
         hospitalId: "h2",
-        hospitalName: "Sunrise Medical Center",
-        hospitalAddress: "456 Oak Avenue, Eastside",
-        consultationFee: 135,
+        hospitalName: "Grande International Hospital",
+        hospitalAddress: "Dhapasi, Kathmandu",
+        consultationFee: 1600,
         availableDays: ["Monday", "Thursday", "Saturday"],
         timeSlots: [
           { startTime: "08:00", endTime: "09:00", available: true },
