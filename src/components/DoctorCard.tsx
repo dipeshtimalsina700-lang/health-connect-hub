@@ -13,7 +13,7 @@ export const DoctorCard = ({ doctor }: DoctorCardProps) => {
   const navigate = useNavigate();
 
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-border/50">
+    <Card className="overflow-hidden hover:shadow-glow transition-all duration-300 hover:-translate-y-1 border-border/50 bg-gradient-card">
       <div className="aspect-square overflow-hidden bg-muted">
         <img 
           src={doctor.image} 
@@ -29,7 +29,7 @@ export const DoctorCard = ({ doctor }: DoctorCardProps) => {
           </div>
           
           <div>
-            <Badge variant="secondary" className="bg-secondary/10 text-secondary-foreground hover:bg-secondary/20">
+            <Badge variant="secondary" className="bg-gradient-to-r from-primary/10 to-secondary/10 text-primary border-primary/20">
               {doctor.specialization}
             </Badge>
           </div>
@@ -56,7 +56,7 @@ export const DoctorCard = ({ doctor }: DoctorCardProps) => {
       <CardFooter className="p-6 pt-0">
         <Button 
           onClick={() => navigate(`/doctor/${doctor.id}`)}
-          className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+          className="w-full bg-gradient-to-r from-primary to-primary-glow hover:shadow-medium hover:scale-[1.02] transition-all text-primary-foreground"
         >
           View Schedule & Book
         </Button>
