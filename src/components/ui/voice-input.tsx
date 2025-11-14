@@ -46,9 +46,29 @@ export const VoiceInput: React.FC<VoiceInputProps> = ({
 
       recognitionInstance.onerror = (event: any) => {
         console.error("Speech recognition error:", event.error);
+        let errorMessage = "Could not recognize speech. Please try again.";
+        
+        switch (event.error) {
+          case "network":
+            errorMessage = "Network error. Please check your internet connection and try again.";
+            break;
+          case "not-allowed":
+            errorMessage = "Microphone access denied. Please allow microphone permissions.";
+            break;
+          case "no-speech":
+            errorMessage = "No speech detected. Please try speaking again.";
+            break;
+          case "aborted":
+            errorMessage = "Speech recognition was cancelled.";
+            break;
+          case "audio-capture":
+            errorMessage = "No microphone found. Please connect a microphone.";
+            break;
+        }
+        
         toast({
           title: "Voice Input Error",
-          description: "Could not recognize speech. Please try again.",
+          description: errorMessage,
           variant: "destructive",
         });
         setIsListening(false);
@@ -62,7 +82,7 @@ export const VoiceInput: React.FC<VoiceInputProps> = ({
     }
   }, [onValueChange, toast]);
 
-  const toggleListening = () => {
+  const toggleListening = async () => {
     if (!recognition) {
       toast({
         title: "Not Supported",
@@ -76,12 +96,22 @@ export const VoiceInput: React.FC<VoiceInputProps> = ({
       recognition.stop();
       setIsListening(false);
     } else {
-      recognition.start();
-      setIsListening(true);
-      toast({
-        title: "Listening...",
-        description: "Speak now to input your text.",
-      });
+      try {
+        // Check microphone permissions
+        await navigator.mediaDevices.getUserMedia({ audio: true });
+        recognition.start();
+        setIsListening(true);
+        toast({
+          title: "Listening...",
+          description: "Speak now to input your text.",
+        });
+      } catch (err: any) {
+        toast({
+          title: "Microphone Access Required",
+          description: "Please allow microphone access to use voice input.",
+          variant: "destructive",
+        });
+      }
     }
   };
 
