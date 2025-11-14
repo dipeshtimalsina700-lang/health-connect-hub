@@ -7,8 +7,12 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Heart, Star, MapPin, Clock, Calendar, ArrowLeft, CheckCircle } from "lucide-react";
+import { Calendar as CalendarComponent } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Heart, Star, MapPin, Clock, Calendar, ArrowLeft, CheckCircle, CalendarIcon } from "lucide-react";
+import { format } from "date-fns";
 import { toast } from "sonner";
+import { cn } from "@/lib/utils";
 
 const DoctorProfile = () => {
   const { id } = useParams();
@@ -17,7 +21,7 @@ const DoctorProfile = () => {
 
   const [selectedSchedule, setSelectedSchedule] = useState<number | null>(null);
   const [selectedTimeSlot, setSelectedTimeSlot] = useState<string | null>(null);
-  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState<Date>();
   const [showBookingModal, setShowBookingModal] = useState(false);
   const [patientName, setPatientName] = useState("");
 
@@ -44,7 +48,7 @@ const DoctorProfile = () => {
         token,
         doctorName: doctor.name,
         hospitalName: schedule.hospitalName,
-        date: selectedDate,
+        date: format(selectedDate, "PPP"),
         timeSlot: selectedTimeSlot,
         fee: schedule.consultationFee,
         patientName
@@ -222,13 +226,30 @@ const DoctorProfile = () => {
             </div>
             <div>
               <Label htmlFor="date">Appointment Date</Label>
-              <Input
-                id="date"
-                type="date"
-                value={selectedDate}
-                onChange={(e) => setSelectedDate(e.target.value)}
-                min={new Date().toISOString().split('T')[0]}
-              />
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className={cn(
+                      "w-full justify-start text-left font-normal",
+                      !selectedDate && "text-muted-foreground"
+                    )}
+                  >
+                    <CalendarIcon className="mr-2 h-4 w-4" />
+                    {selectedDate ? format(selectedDate, "PPP") : <span>Pick a date</span>}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <CalendarComponent
+                    mode="single"
+                    selected={selectedDate}
+                    onSelect={setSelectedDate}
+                    disabled={(date) => date < new Date(new Date().setHours(0, 0, 0, 0))}
+                    initialFocus
+                    className="pointer-events-auto"
+                  />
+                </PopoverContent>
+              </Popover>
             </div>
             <div className="p-4 bg-muted rounded-lg space-y-2">
               <p className="text-sm"><span className="font-semibold">Doctor:</span> {doctor.name}</p>
