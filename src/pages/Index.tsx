@@ -92,7 +92,7 @@ const Index = () => {
                 <Button 
                   size="lg"
                   onClick={() => navigate("/doctors")}
-                  className="bg-gradient-to-r from-primary to-primary-glow hover:opacity-90 text-primary-foreground shadow-lg"
+                  className="bg-gradient-to-r from-primary to-primary-glow hover:shadow-glow hover:scale-[1.02] transition-all text-primary-foreground"
                 >
                   Find a Doctor
                 </Button>
@@ -100,18 +100,18 @@ const Index = () => {
                   size="lg"
                   variant="outline"
                   onClick={() => navigate("/symptom-checker")}
-                  className="border-2 hover:bg-muted"
+                  className="border-2 border-primary/50 hover:bg-primary/5 hover:border-primary transition-all"
                 >
                   Check Symptoms
                 </Button>
               </div>
             </div>
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl blur-3xl" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-3xl blur-3xl animate-pulse" />
               <img 
                 src={heroImage}
                 alt="Healthcare professionals"
-                className="relative rounded-3xl shadow-2xl w-full"
+                className="relative rounded-3xl shadow-glow w-full"
               />
             </div>
           </div>
@@ -131,9 +131,9 @@ const Index = () => {
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <Card key={index} className="border-border/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <Card key={index} className="border-border/50 hover:shadow-medium transition-all duration-300 hover:-translate-y-1 bg-gradient-card">
                   <CardContent className="p-6">
-                    <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-4">
+                    <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-4 shadow-soft">
                       <Icon className="h-6 w-6 text-white" />
                     </div>
                     <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
@@ -148,7 +148,7 @@ const Index = () => {
 
       {/* CTA Section */}
       <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-10" />
+        <div className="absolute inset-0 bg-gradient-hero opacity-10" />
         <div className="container mx-auto px-4 relative">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <h2 className="text-4xl font-bold">Ready to Get Started?</h2>
@@ -158,7 +158,7 @@ const Index = () => {
             <Button 
               size="lg"
               onClick={() => navigate("/doctors")}
-              className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white shadow-xl"
+              className="bg-gradient-to-r from-primary via-primary-glow to-secondary hover:shadow-glow hover:scale-[1.02] transition-all text-white"
             >
               Browse Doctors Now
             </Button>
