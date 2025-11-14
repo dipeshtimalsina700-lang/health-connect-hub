@@ -177,5 +177,205 @@ export const mockDoctors: Doctor[] = [
         ]
       }
     ]
+  },
+  {
+    id: "7",
+    name: "Dr. Anjali Thapa",
+    specialization: "Cardiology",
+    qualifications: "MBBS, MD (Cardiology), DM",
+    experience: 16,
+    rating: 4.8,
+    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&h=400&fit=crop",
+    about: "Expert in heart disease prevention and cardiac interventions.",
+    languages: ["English", "Nepali", "Hindi"],
+    schedules: [
+      {
+        hospitalId: "h1",
+        hospitalName: "Tribhuvan University Teaching Hospital",
+        hospitalAddress: "Maharajgunj, Kathmandu",
+        consultationFee: 1800,
+        availableDays: ["Tuesday", "Thursday", "Saturday"],
+        timeSlots: [
+          { startTime: "09:00", endTime: "10:00", available: true },
+          { startTime: "10:00", endTime: "11:00", available: true },
+          { startTime: "14:00", endTime: "15:00", available: true },
+        ]
+      }
+    ]
+  },
+  {
+    id: "8",
+    name: "Dr. Bikash Shrestha",
+    specialization: "ENT",
+    qualifications: "MBBS, MS (ENT)",
+    experience: 11,
+    rating: 4.7,
+    image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&h=400&fit=crop",
+    about: "Specialized in ear, nose, and throat disorders including hearing problems.",
+    languages: ["English", "Nepali"],
+    schedules: [
+      {
+        hospitalId: "h2",
+        hospitalName: "Grande International Hospital",
+        hospitalAddress: "Dhapasi, Kathmandu",
+        consultationFee: 1400,
+        availableDays: ["Monday", "Wednesday", "Friday"],
+        timeSlots: [
+          { startTime: "10:00", endTime: "11:00", available: true },
+          { startTime: "11:00", endTime: "12:00", available: true },
+          { startTime: "15:00", endTime: "16:00", available: true },
+        ]
+      }
+    ]
+  },
+  {
+    id: "9",
+    name: "Dr. Suman Rai",
+    specialization: "Neurology",
+    qualifications: "MBBS, MD (Neurology), DM",
+    experience: 13,
+    rating: 4.8,
+    image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=400&fit=crop",
+    about: "Expert in treating neurological disorders, headaches, and epilepsy.",
+    languages: ["English", "Nepali"],
+    schedules: [
+      {
+        hospitalId: "h3",
+        hospitalName: "Nepal Mediciti Hospital",
+        hospitalAddress: "Bhaisepati, Lalitpur",
+        consultationFee: 2000,
+        availableDays: ["Tuesday", "Thursday", "Saturday"],
+        timeSlots: [
+          { startTime: "09:00", endTime: "10:00", available: true },
+          { startTime: "13:00", endTime: "14:00", available: true },
+          { startTime: "14:00", endTime: "15:00", available: true },
+        ]
+      }
+    ]
+  },
+  {
+    id: "10",
+    name: "Dr. Ramesh Khadka",
+    specialization: "Gastroenterology",
+    qualifications: "MBBS, MD (Medicine), DM (Gastroenterology)",
+    experience: 15,
+    rating: 4.7,
+    image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop",
+    about: "Specialist in digestive system disorders, liver diseases, and endoscopy.",
+    languages: ["English", "Nepali"],
+    schedules: [
+      {
+        hospitalId: "h1",
+        hospitalName: "Tribhuvan University Teaching Hospital",
+        hospitalAddress: "Maharajgunj, Kathmandu",
+        consultationFee: 1700,
+        availableDays: ["Monday", "Wednesday", "Friday"],
+        timeSlots: [
+          { startTime: "08:00", endTime: "09:00", available: true },
+          { startTime: "11:00", endTime: "12:00", available: true },
+          { startTime: "16:00", endTime: "17:00", available: true },
+        ]
+      }
+    ]
+  },
+  {
+    id: "11",
+    name: "Dr. Maya Gurung",
+    specialization: "Dermatology",
+    qualifications: "MBBS, MD (Dermatology)",
+    experience: 8,
+    rating: 4.6,
+    image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&h=400&fit=crop",
+    about: "Expert in skin allergies, acne treatment, and cosmetic dermatology.",
+    languages: ["English", "Nepali"],
+    schedules: [
+      {
+        hospitalId: "h2",
+        hospitalName: "Grande International Hospital",
+        hospitalAddress: "Dhapasi, Kathmandu",
+        consultationFee: 1350,
+        availableDays: ["Tuesday", "Thursday", "Saturday"],
+        timeSlots: [
+          { startTime: "10:00", endTime: "11:00", available: true },
+          { startTime: "14:00", endTime: "15:00", available: true },
+          { startTime: "15:00", endTime: "16:00", available: true },
+        ]
+      }
+    ]
+  },
+  {
+    id: "12",
+    name: "Dr. Prakash Adhikari",
+    specialization: "Ophthalmology",
+    qualifications: "MBBS, MS (Ophthalmology)",
+    experience: 12,
+    rating: 4.7,
+    image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&h=400&fit=crop",
+    about: "Specialist in eye care, cataract surgery, and vision correction.",
+    languages: ["English", "Nepali"],
+    schedules: [
+      {
+        hospitalId: "h3",
+        hospitalName: "Nepal Mediciti Hospital",
+        hospitalAddress: "Bhaisepati, Lalitpur",
+        consultationFee: 1500,
+        availableDays: ["Monday", "Wednesday", "Friday"],
+        timeSlots: [
+          { startTime: "09:00", endTime: "10:00", available: true },
+          { startTime: "10:00", endTime: "11:00", available: true },
+          { startTime: "14:00", endTime: "15:00", available: true },
+        ]
+      }
+    ]
+  },
+  {
+    id: "13",
+    name: "Dr. Deepa Karki",
+    specialization: "Gynecology",
+    qualifications: "MBBS, MD (Obstetrics & Gynecology)",
+    experience: 14,
+    rating: 4.8,
+    image: "https://images.unsplash.com/photo-1609958299038-75c85ad15e4b?w=400&h=400&fit=crop",
+    about: "Expert in women's health, pregnancy care, and gynecological surgeries.",
+    languages: ["English", "Nepali", "Hindi"],
+    schedules: [
+      {
+        hospitalId: "h1",
+        hospitalName: "Tribhuvan University Teaching Hospital",
+        hospitalAddress: "Maharajgunj, Kathmandu",
+        consultationFee: 1600,
+        availableDays: ["Tuesday", "Thursday", "Saturday"],
+        timeSlots: [
+          { startTime: "09:00", endTime: "10:00", available: true },
+          { startTime: "13:00", endTime: "14:00", available: true },
+          { startTime: "15:00", endTime: "16:00", available: true },
+        ]
+      }
+    ]
+  },
+  {
+    id: "14",
+    name: "Dr. Anil Pokharel",
+    specialization: "Pulmonology",
+    qualifications: "MBBS, MD (Pulmonary Medicine)",
+    experience: 10,
+    rating: 4.6,
+    image: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&h=400&fit=crop",
+    about: "Specialist in respiratory diseases, asthma, and lung infections.",
+    languages: ["English", "Nepali"],
+    schedules: [
+      {
+        hospitalId: "h2",
+        hospitalName: "Grande International Hospital",
+        hospitalAddress: "Dhapasi, Kathmandu",
+        consultationFee: 1450,
+        availableDays: ["Monday", "Wednesday", "Friday"],
+        timeSlots: [
+          { startTime: "08:00", endTime: "09:00", available: true },
+          { startTime: "11:00", endTime: "12:00", available: true },
+          { startTime: "16:00", endTime: "17:00", available: true },
+        ]
+      }
+    ]
   }
 ];
