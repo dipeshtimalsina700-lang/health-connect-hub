@@ -81,12 +81,7 @@ const BookingConfirmation = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Date</p>
-                  <p className="font-semibold">{new Date(bookingData.date).toLocaleDateString('en-US', { 
-                    weekday: 'long', 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
-                  })}</p>
+                  <p className="font-semibold">{bookingData.date}</p>
                 </div>
               </div>
 
