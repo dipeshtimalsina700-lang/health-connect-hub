@@ -14,7 +14,57 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      bookings: {
+        Row: {
+          age: number
+          booking_date: string
+          consultation_fee: number
+          created_at: string | null
+          doctor_id: string
+          gender: string
+          has_insurance: boolean | null
+          hospital_id: string
+          id: string
+          insurance_provider: string | null
+          patient_name: string
+          phone: string
+          time_slot: string
+          token_number: number
+        }
+        Insert: {
+          age: number
+          booking_date: string
+          consultation_fee: number
+          created_at?: string | null
+          doctor_id: string
+          gender: string
+          has_insurance?: boolean | null
+          hospital_id: string
+          id?: string
+          insurance_provider?: string | null
+          patient_name: string
+          phone: string
+          time_slot: string
+          token_number: number
+        }
+        Update: {
+          age?: number
+          booking_date?: string
+          consultation_fee?: number
+          created_at?: string | null
+          doctor_id?: string
+          gender?: string
+          has_insurance?: boolean | null
+          hospital_id?: string
+          id?: string
+          insurance_provider?: string | null
+          patient_name?: string
+          phone?: string
+          time_slot?: string
+          token_number?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
