@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { VoiceInput } from "@/components/ui/voice-input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Heart, Star, MapPin, Clock, Calendar, ArrowLeft, CheckCircle, CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
 import { toast } from "sonner";
@@ -24,7 +25,12 @@ const DoctorProfile = () => {
   const [selectedTimeSlot, setSelectedTimeSlot] = useState<string | null>(null);
   const [selectedDate, setSelectedDate] = useState<Date>();
   const [showBookingModal, setShowBookingModal] = useState(false);
-  const [patientName, setPatientName] = useState("");
+  const [bookingData, setBookingData] = useState({
+    patientName: "",
+    age: "",
+    gender: "",
+    phone: ""
+  });
 
   if (!doctor) {
     return (
@@ -35,8 +41,8 @@ const DoctorProfile = () => {
   }
 
   const handleBooking = () => {
-    if (!patientName) {
-      toast.error("Please enter patient name");
+    if (!bookingData.patientName || !bookingData.age || !bookingData.gender || !bookingData.phone) {
+      toast.error("Please fill in all required fields");
       return;
     }
     if (!selectedDate) {
@@ -60,7 +66,7 @@ const DoctorProfile = () => {
         date: format(selectedDate, "PPP"),
         timeSlot: selectedTimeSlot,
         fee: schedule.consultationFee,
-        patientName
+        patientName: bookingData.patientName
       }
     });
   };
@@ -219,22 +225,66 @@ const DoctorProfile = () => {
 
       {/* Booking Modal */}
       <Dialog open={showBookingModal} onOpenChange={setShowBookingModal}>
-        <DialogContent>
+        <DialogContent className="max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>Complete Your Booking</DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <Label htmlFor="patientName">Patient Name *</Label>
+                <VoiceInput
+                  id="patientName"
+                  value={bookingData.patientName}
+                  onValueChange={(value) => setBookingData({...bookingData, patientName: value})}
+                  placeholder="Enter or speak patient name"
+                  required
+                />
+              </div>
+              <div>
+                <Label htmlFor="age">Age *</Label>
+                <VoiceInput
+                  id="age"
+                  type="number"
+                  value={bookingData.age}
+                  onValueChange={(value) => setBookingData({...bookingData, age: value})}
+                  placeholder="Enter or speak age"
+                  required
+                />
+              </div>
+            </div>
+
             <div>
-              <Label htmlFor="patientName">Patient Name</Label>
+              <Label htmlFor="gender">Gender *</Label>
+              <Select 
+                value={bookingData.gender}
+                onValueChange={(value) => setBookingData({...bookingData, gender: value})}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select gender" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="male">Male</SelectItem>
+                  <SelectItem value="female">Female</SelectItem>
+                  <SelectItem value="other">Other</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div>
+              <Label htmlFor="phone">Phone Number *</Label>
               <VoiceInput
-                id="patientName"
-                value={patientName}
-                onValueChange={setPatientName}
-                placeholder="Enter patient name"
+                id="phone"
+                type="tel"
+                value={bookingData.phone}
+                onValueChange={(value) => setBookingData({...bookingData, phone: value})}
+                placeholder="Enter or speak phone number"
+                required
               />
             </div>
+
             <div>
-              <Label htmlFor="date">Appointment Date</Label>
+              <Label htmlFor="date">Appointment Date *</Label>
               <Popover>
                 <PopoverTrigger asChild>
                   <Button
@@ -260,12 +310,14 @@ const DoctorProfile = () => {
                 </PopoverContent>
               </Popover>
             </div>
+
             <div className="p-4 bg-muted rounded-lg space-y-2">
               <p className="text-sm"><span className="font-semibold">Doctor:</span> {doctor.name}</p>
               <p className="text-sm"><span className="font-semibold">Hospital:</span> {selectedSchedule !== null && doctor.schedules[selectedSchedule].hospitalName}</p>
               <p className="text-sm"><span className="font-semibold">Time:</span> {selectedTimeSlot}</p>
               <p className="text-sm"><span className="font-semibold">Consultation Fee:</span> ${selectedSchedule !== null && doctor.schedules[selectedSchedule].consultationFee}</p>
             </div>
+
             <Button 
               onClick={handleBooking}
               className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white"
