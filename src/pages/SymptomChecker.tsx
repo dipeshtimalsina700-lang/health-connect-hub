@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { VoiceInput } from "@/components/ui/voice-input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Heart, ArrowLeft } from "lucide-react";
 import { mockDoctors } from "@/data/mockDoctors";
 import { DoctorCard } from "@/components/DoctorCard";
@@ -12,26 +11,20 @@ import { toast } from "sonner";
 
 const SymptomChecker = () => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    name: "",
-    age: "",
-    gender: "",
-    address: "",
-    symptoms: ""
-  });
+  const [symptoms, setSymptoms] = useState("");
   const [recommendations, setRecommendations] = useState<typeof mockDoctors>([]);
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.name || !formData.age || !formData.gender || !formData.symptoms) {
-      toast.error("Please fill in all required fields");
+    if (!symptoms) {
+      toast.error("Please describe your symptoms");
       return;
     }
 
     // Comprehensive symptom matching logic
-    const symptomsLower = formData.symptoms.toLowerCase();
+    const symptomsLower = symptoms.toLowerCase();
     let recommended = mockDoctors;
 
     // Cardiology - Heart related
@@ -84,30 +77,40 @@ const SymptomChecker = () => {
         symptomsLower.includes("intestine")) {
       recommended = mockDoctors.filter(d => d.specialization === "Gastroenterology");
     }
-    // Ophthalmology - Eye related
-    else if (symptomsLower.includes("eye") || symptomsLower.includes("vision") || 
-        symptomsLower.includes("cataract") || symptomsLower.includes("glasses") ||
-        symptomsLower.includes("blind") || symptomsLower.includes("sight")) {
-      recommended = mockDoctors.filter(d => d.specialization === "Ophthalmology");
-    }
-    // Gynecology - Women's health
-    else if (symptomsLower.includes("pregnancy") || symptomsLower.includes("period") || 
-        symptomsLower.includes("menstrual") || symptomsLower.includes("gynec") ||
-        symptomsLower.includes("ovary") || symptomsLower.includes("uterus") ||
-        symptomsLower.includes("women") || symptomsLower.includes("female")) {
-      recommended = mockDoctors.filter(d => d.specialization === "Gynecology");
-    }
-    // Pulmonology - Respiratory/Lung related
-    else if (symptomsLower.includes("lung") || symptomsLower.includes("breathing") || 
-        symptomsLower.includes("asthma") || symptomsLower.includes("cough") ||
-        symptomsLower.includes("bronchitis") || symptomsLower.includes("pneumonia") ||
-        symptomsLower.includes("respiratory")) {
+    // Pulmonology - Respiratory system
+    else if (symptomsLower.includes("cough") || symptomsLower.includes("breathing") || 
+        symptomsLower.includes("asthma") || symptomsLower.includes("pneumonia") ||
+        symptomsLower.includes("lung") || symptomsLower.includes("bronchitis") ||
+        symptomsLower.includes("tuberculosis") || symptomsLower.includes("tb")) {
       recommended = mockDoctors.filter(d => d.specialization === "Pulmonology");
     }
+    // Endocrinology - Hormonal and metabolic
+    else if (symptomsLower.includes("diabetes") || symptomsLower.includes("thyroid") || 
+        symptomsLower.includes("hormone") || symptomsLower.includes("weight") ||
+        symptomsLower.includes("metabolism") || symptomsLower.includes("sugar")) {
+      recommended = mockDoctors.filter(d => d.specialization === "Endocrinology");
+    }
+    // Urology - Urinary system
+    else if (symptomsLower.includes("kidney") || symptomsLower.includes("bladder") || 
+        symptomsLower.includes("urinary") || symptomsLower.includes("prostate") ||
+        symptomsLower.includes("stone")) {
+      recommended = mockDoctors.filter(d => d.specialization === "Urology");
+    }
+    // Ophthalmology - Eye related
+    else if (symptomsLower.includes("eye") || symptomsLower.includes("vision") || 
+        symptomsLower.includes("cataract") || symptomsLower.includes("glaucoma")) {
+      recommended = mockDoctors.filter(d => d.specialization === "Ophthalmology");
+    }
 
-    setRecommendations(recommended.slice(0, 3));
+    setRecommendations(recommended);
     setSubmitted(true);
-    toast.success("Recommendations generated based on your symptoms");
+    toast.success("Analysis complete! Here are your recommended doctors.");
+  };
+
+  const handleReset = () => {
+    setSymptoms("");
+    setRecommendations([]);
+    setSubmitted(false);
   };
 
   return (
@@ -125,165 +128,111 @@ const SymptomChecker = () => {
                 CareSync
               </span>
             </div>
-            <div className="flex items-center gap-4">
-              <Button 
-                variant="ghost"
-                onClick={() => navigate("/doctors")}
-                className="text-foreground hover:text-primary"
-              >
-                Browse Doctors
-              </Button>
-            </div>
+            <Button variant="outline" onClick={() => navigate("/doctors")}>
+              Browse Doctors
+            </Button>
           </div>
         </div>
       </nav>
 
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className="container mx-auto px-4 py-8">
         <Button 
           variant="ghost" 
           onClick={() => navigate("/")}
           className="mb-6"
         >
-          <ArrowLeft className="mr-2 h-4 w-4" /> Back to Home
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Back to Home
         </Button>
 
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-4">Symptom Checker</h1>
-          <p className="text-xl text-muted-foreground">
-            Not sure which doctor to consult? Tell us about your symptoms and we'll recommend the right specialists.
-          </p>
-        </div>
-
         {!submitted ? (
-          <Card>
-            <CardHeader>
-              <CardTitle>Tell Us About Your Symptoms</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="name">Full Name *</Label>
+          <div className="max-w-2xl mx-auto">
+            <Card className="border-2 border-primary/20 shadow-xl">
+              <CardHeader className="text-center">
+                <CardTitle className="text-3xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                  Symptom Checker
+                </CardTitle>
+                <p className="text-muted-foreground mt-2">
+                  Tell us about your symptoms and we'll recommend the right specialists for you
+                </p>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="symptoms">Describe Your Symptoms *</Label>
                     <VoiceInput
-                      id="name"
-                      value={formData.name}
-                      onValueChange={(value) => setFormData({...formData, name: value})}
-                      placeholder="Enter or speak your name"
+                      id="symptoms"
+                      placeholder="Describe your symptoms in detail..."
+                      value={symptoms}
+                      onValueChange={(value) => setSymptoms(value)}
+                      multiline
                       required
+                      className="min-h-[150px]"
                     />
+                    <p className="text-sm text-muted-foreground">
+                      Be as specific as possible about your symptoms for better doctor recommendations. You'll provide your personal details after selecting a doctor.
+                    </p>
                   </div>
-                  <div>
-                    <Label htmlFor="age">Age *</Label>
-                    <VoiceInput
-                      id="age"
-                      type="number"
-                      value={formData.age}
-                      onValueChange={(value) => setFormData({...formData, age: value})}
-                      placeholder="Enter or speak your age"
-                      required
-                    />
-                  </div>
-                </div>
 
-                <div>
-                  <Label htmlFor="gender">Gender *</Label>
-                  <Select 
-                    value={formData.gender}
-                    onValueChange={(value) => setFormData({...formData, gender: value})}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select gender" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="male">Male</SelectItem>
-                      <SelectItem value="female">Female</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div>
-                  <Label htmlFor="address">Address</Label>
-                  <VoiceInput
-                    id="address"
-                    value={formData.address}
-                    onValueChange={(value) => setFormData({...formData, address: value})}
-                    placeholder="Enter or speak your address"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="symptoms">Describe Your Symptoms *</Label>
-                  <VoiceInput
-                    id="symptoms"
-                    multiline
-                    value={formData.symptoms}
-                    onValueChange={(value) => setFormData({...formData, symptoms: value})}
-                    placeholder="E.g., I have a persistent headache and feel dizzy..."
-                    required
-                  />
-                </div>
-
-                <Button 
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white"
-                  size="lg"
-                >
-                  Get Doctor Recommendations
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
+                  <Button type="submit" className="w-full" size="lg">
+                    Find Recommended Doctors
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
         ) : (
           <div className="space-y-8">
-            <Card className="bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Patient Information</h3>
-                <div className="grid md:grid-cols-2 gap-4 text-sm">
-                  <p><span className="font-medium">Name:</span> {formData.name}</p>
-                  <p><span className="font-medium">Age:</span> {formData.age} years</p>
-                  <p><span className="font-medium">Gender:</span> {formData.gender}</p>
-                  {formData.address && <p><span className="font-medium">Address:</span> {formData.address}</p>}
-                </div>
-                <div className="mt-4">
-                  <p className="font-medium text-sm mb-1">Symptoms:</p>
-                  <p className="text-sm text-muted-foreground">{formData.symptoms}</p>
-                </div>
+            <div className="text-center">
+              <h2 className="text-3xl font-bold mb-2">Recommended Doctors</h2>
+              <p className="text-muted-foreground">Based on your symptoms</p>
+            </div>
+
+            <Card className="border-2 border-primary/20 shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-2xl">Your Symptoms</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-foreground">{symptoms}</p>
               </CardContent>
             </Card>
 
-            <div>
-              <h2 className="text-2xl font-bold mb-6">Recommended Doctors</h2>
-              {recommendations.length > 0 ? (
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {recommendations.map((doctor) => (
-                    <DoctorCard key={doctor.id} doctor={doctor} />
-                  ))}
-                </div>
-              ) : (
-                <Card>
-                  <CardContent className="p-6 text-center">
-                    <p className="text-muted-foreground mb-4">
-                      Based on your symptoms, we recommend consulting with any of our qualified doctors.
-                    </p>
-                    <Button onClick={() => navigate("/doctors")}>
-                      Browse All Doctors
-                    </Button>
-                  </CardContent>
-                </Card>
-              )}
+            {recommendations.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {recommendations.map((doctor) => (
+                  <DoctorCard key={doctor.id} doctor={doctor} />
+                ))}
+              </div>
+            ) : (
+              <Card className="text-center p-8">
+                <p className="text-muted-foreground mb-4">
+                  We couldn't find specific specialists for your symptoms. We recommend browsing all available doctors to find the right match.
+                </p>
+                <Button onClick={() => navigate("/doctors")}>
+                  Browse All Doctors
+                </Button>
+              </Card>
+            )}
+
+            <div className="text-center mt-8 space-y-4">
+              <p className="text-muted-foreground">
+                Click "View Schedule & Book" on any doctor to provide your details and complete the booking
+              </p>
+              <div>
+                <p className="text-muted-foreground mb-4">
+                  Didn't find what you're looking for?
+                </p>
+                <Button variant="outline" onClick={() => navigate("/doctors")}>
+                  Browse All Doctors
+                </Button>
+              </div>
             </div>
 
-            <Button 
-              variant="outline"
-              onClick={() => {
-                setSubmitted(false);
-                setFormData({name: "", age: "", gender: "", address: "", symptoms: ""});
-              }}
-              className="w-full"
-            >
-              Submit Another Query
-            </Button>
+            <div className="text-center">
+              <Button onClick={handleReset} variant="outline" size="lg">
+                Submit Another Query
+              </Button>
+            </div>
           </div>
         )}
       </div>
