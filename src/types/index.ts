@@ -18,6 +18,10 @@ export interface DoctorSchedule {
   consultationFee: number;
   availableDays: string[];
   timeSlots: TimeSlot[];
+  hasInsurance: boolean;
+  isGovernmentHospital: boolean;
+  isOnLeave?: boolean;
+  leaveReason?: string;
 }
 
 export interface TimeSlot {
@@ -32,6 +36,14 @@ export interface SymptomFormData {
   gender: string;
   address: string;
   symptoms: string;
+}
+
+export interface BookingFormData {
+  patientName: string;
+  age: string;
+  gender: string;
+  phone: string;
+  hasInsurance: boolean;
 }
 
 export interface Booking {

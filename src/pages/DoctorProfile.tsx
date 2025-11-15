@@ -29,7 +29,8 @@ const DoctorProfile = () => {
     patientName: "",
     age: "",
     gender: "",
-    phone: ""
+    phone: "",
+    hasInsurance: false
   });
 
   if (!doctor) {
@@ -55,6 +56,28 @@ const DoctorProfile = () => {
     }
 
     const schedule = doctor.schedules[selectedSchedule];
+    
+    // Check if doctor is on leave
+    if (schedule.isOnLeave) {
+      toast.error(`Doctor is currently on leave: ${schedule.leaveReason}`);
+      return;
+    }
+
+    // Calculate fee based on gender and government hospital
+    let finalFee = schedule.consultationFee;
+    if (schedule.isGovernmentHospital) {
+      if (bookingData.gender === "female") {
+        finalFee = Math.max(500, schedule.consultationFee * 0.7); // 30% discount minimum 500
+      } else if (bookingData.gender === "male") {
+        finalFee = Math.max(700, schedule.consultationFee * 0.8); // 20% discount minimum 700
+      }
+    }
+
+    // Apply insurance discount if applicable
+    if (bookingData.hasInsurance && schedule.hasInsurance) {
+      finalFee = finalFee * 0.85; // 15% additional discount with insurance
+    }
+    
     const token = Math.floor(100000 + Math.random() * 900000).toString();
     
     toast.success("Appointment booked successfully!");
@@ -65,7 +88,7 @@ const DoctorProfile = () => {
         hospitalName: schedule.hospitalName,
         date: format(selectedDate, "PPP"),
         timeSlot: selectedTimeSlot,
-        fee: schedule.consultationFee,
+        fee: Math.round(finalFee),
         patientName: bookingData.patientName
       }
     });
@@ -171,7 +194,7 @@ const DoctorProfile = () => {
                         </Badge>
                       </div>
                       
-                      <div className="space-y-2">
+                       <div className="space-y-2">
                         <p className="text-sm font-medium">Available Days:</p>
                         <div className="flex flex-wrap gap-2">
                           {schedule.availableDays.map(day => (
@@ -180,6 +203,18 @@ const DoctorProfile = () => {
                             </Badge>
                           ))}
                         </div>
+                      </div>
+
+                      <div className="flex flex-wrap gap-2 mt-3">
+                        {schedule.isGovernmentHospital && (
+                          <Badge className="bg-green-500/10 text-green-700">Government Hospital</Badge>
+                        )}
+                        {schedule.hasInsurance && (
+                          <Badge className="bg-blue-500/10 text-blue-700">Insurance Accepted</Badge>
+                        )}
+                        {schedule.isOnLeave && (
+                          <Badge variant="destructive">On Leave: {schedule.leaveReason}</Badge>
+                        )}
                       </div>
 
                       {selectedSchedule === index && (
@@ -282,6 +317,21 @@ const DoctorProfile = () => {
                 required
               />
             </div>
+
+            {selectedSchedule !== null && doctor.schedules[selectedSchedule].hasInsurance && (
+              <div className="flex items-center space-x-2 p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
+                <input
+                  type="checkbox"
+                  id="insurance"
+                  checked={bookingData.hasInsurance}
+                  onChange={(e) => setBookingData({...bookingData, hasInsurance: e.target.checked})}
+                  className="h-4 w-4"
+                />
+                <Label htmlFor="insurance" className="cursor-pointer">
+                  I have health insurance (15% additional discount)
+                </Label>
+              </div>
+            )}
 
             <div>
               <Label htmlFor="date">Appointment Date *</Label>

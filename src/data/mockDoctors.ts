@@ -18,6 +18,8 @@ export const mockDoctors: Doctor[] = [
         hospitalAddress: "Maharajgunj, Kathmandu",
         consultationFee: 1500,
         availableDays: ["Monday", "Wednesday", "Friday"],
+        hasInsurance: false,
+        isGovernmentHospital: true,
         timeSlots: [
           { startTime: "09:00", endTime: "10:00", available: true },
           { startTime: "10:00", endTime: "11:00", available: true },
@@ -31,6 +33,8 @@ export const mockDoctors: Doctor[] = [
         hospitalAddress: "Dhapasi, Kathmandu",
         consultationFee: 2000,
         availableDays: ["Tuesday", "Thursday"],
+        hasInsurance: false,
+        isGovernmentHospital: false,
         timeSlots: [
           { startTime: "10:00", endTime: "11:00", available: true },
           { startTime: "11:00", endTime: "12:00", available: true },
@@ -56,6 +60,10 @@ export const mockDoctors: Doctor[] = [
         hospitalAddress: "Maharajgunj, Kathmandu",
         consultationFee: 1400,
         availableDays: ["Monday", "Tuesday", "Thursday"],
+        hasInsurance: false,
+        isGovernmentHospital: true,
+        isOnLeave: true,
+        leaveReason: "Medical Conference - Returns on November 20",
         timeSlots: [
           { startTime: "08:00", endTime: "09:00", available: true },
           { startTime: "09:00", endTime: "10:00", available: true },
@@ -81,6 +89,8 @@ export const mockDoctors: Doctor[] = [
         hospitalAddress: "Dhapasi, Kathmandu",
         consultationFee: 2500,
         availableDays: ["Monday", "Wednesday", "Friday"],
+        hasInsurance: false,
+        isGovernmentHospital: false,
         timeSlots: [
           { startTime: "09:00", endTime: "10:00", available: true },
           { startTime: "10:00", endTime: "11:00", available: false },
@@ -94,6 +104,8 @@ export const mockDoctors: Doctor[] = [
         hospitalAddress: "Bhaisepati, Lalitpur",
         consultationFee: 2800,
         availableDays: ["Tuesday", "Thursday"],
+        hasInsurance: false,
+        isGovernmentHospital: false,
         timeSlots: [
           { startTime: "11:00", endTime: "12:00", available: true },
           { startTime: "15:00", endTime: "16:00", available: true },
@@ -118,6 +130,8 @@ export const mockDoctors: Doctor[] = [
         hospitalAddress: "Bhaisepati, Lalitpur",
         consultationFee: 1300,
         availableDays: ["Monday", "Wednesday", "Thursday", "Friday"],
+        hasInsurance: false,
+        isGovernmentHospital: false,
         timeSlots: [
           { startTime: "10:00", endTime: "11:00", available: true },
           { startTime: "11:00", endTime: "12:00", available: true },
@@ -144,6 +158,8 @@ export const mockDoctors: Doctor[] = [
         hospitalAddress: "Maharajgunj, Kathmandu",
         consultationFee: 1200,
         availableDays: ["Tuesday", "Wednesday", "Friday"],
+        hasInsurance: false,
+        isGovernmentHospital: true,
         timeSlots: [
           { startTime: "09:00", endTime: "10:00", available: true },
           { startTime: "10:00", endTime: "11:00", available: true },
@@ -170,6 +186,8 @@ export const mockDoctors: Doctor[] = [
         hospitalAddress: "Dhapasi, Kathmandu",
         consultationFee: 1600,
         availableDays: ["Monday", "Thursday", "Saturday"],
+        hasInsurance: false,
+        isGovernmentHospital: false,
         timeSlots: [
           { startTime: "08:00", endTime: "09:00", available: true },
           { startTime: "13:00", endTime: "14:00", available: true },
@@ -195,6 +213,8 @@ export const mockDoctors: Doctor[] = [
         hospitalAddress: "Maharajgunj, Kathmandu",
         consultationFee: 1800,
         availableDays: ["Tuesday", "Thursday", "Saturday"],
+        hasInsurance: false,
+        isGovernmentHospital: true,
         timeSlots: [
           { startTime: "09:00", endTime: "10:00", available: true },
           { startTime: "10:00", endTime: "11:00", available: true },
@@ -220,6 +240,8 @@ export const mockDoctors: Doctor[] = [
         hospitalAddress: "Dhapasi, Kathmandu",
         consultationFee: 1400,
         availableDays: ["Monday", "Wednesday", "Friday"],
+        hasInsurance: false,
+        isGovernmentHospital: false,
         timeSlots: [
           { startTime: "10:00", endTime: "11:00", available: true },
           { startTime: "11:00", endTime: "12:00", available: true },
@@ -245,6 +267,8 @@ export const mockDoctors: Doctor[] = [
         hospitalAddress: "Bhaisepati, Lalitpur",
         consultationFee: 2000,
         availableDays: ["Tuesday", "Thursday", "Saturday"],
+        hasInsurance: false,
+        isGovernmentHospital: false,
         timeSlots: [
           { startTime: "09:00", endTime: "10:00", available: true },
           { startTime: "13:00", endTime: "14:00", available: true },
@@ -270,6 +294,8 @@ export const mockDoctors: Doctor[] = [
         hospitalAddress: "Maharajgunj, Kathmandu",
         consultationFee: 1700,
         availableDays: ["Monday", "Wednesday", "Friday"],
+        hasInsurance: false,
+        isGovernmentHospital: true,
         timeSlots: [
           { startTime: "08:00", endTime: "09:00", available: true },
           { startTime: "11:00", endTime: "12:00", available: true },
@@ -295,6 +321,8 @@ export const mockDoctors: Doctor[] = [
         hospitalAddress: "Dhapasi, Kathmandu",
         consultationFee: 1350,
         availableDays: ["Tuesday", "Thursday", "Saturday"],
+        hasInsurance: false,
+        isGovernmentHospital: false,
         timeSlots: [
           { startTime: "10:00", endTime: "11:00", available: true },
           { startTime: "14:00", endTime: "15:00", available: true },
@@ -320,6 +348,8 @@ export const mockDoctors: Doctor[] = [
         hospitalAddress: "Bhaisepati, Lalitpur",
         consultationFee: 1500,
         availableDays: ["Monday", "Wednesday", "Friday"],
+        hasInsurance: false,
+        isGovernmentHospital: false,
         timeSlots: [
           { startTime: "09:00", endTime: "10:00", available: true },
           { startTime: "10:00", endTime: "11:00", available: true },
@@ -345,6 +375,8 @@ export const mockDoctors: Doctor[] = [
         hospitalAddress: "Maharajgunj, Kathmandu",
         consultationFee: 1600,
         availableDays: ["Tuesday", "Thursday", "Saturday"],
+        hasInsurance: false,
+        isGovernmentHospital: true,
         timeSlots: [
           { startTime: "09:00", endTime: "10:00", available: true },
           { startTime: "13:00", endTime: "14:00", available: true },
@@ -370,6 +402,8 @@ export const mockDoctors: Doctor[] = [
         hospitalAddress: "Dhapasi, Kathmandu",
         consultationFee: 1450,
         availableDays: ["Monday", "Wednesday", "Friday"],
+        hasInsurance: false,
+        isGovernmentHospital: false,
         timeSlots: [
           { startTime: "08:00", endTime: "09:00", available: true },
           { startTime: "11:00", endTime: "12:00", available: true },
