@@ -365,7 +365,7 @@ const DoctorProfile = () => {
               <p className="text-sm"><span className="font-semibold">Doctor:</span> {doctor.name}</p>
               <p className="text-sm"><span className="font-semibold">Hospital:</span> {selectedSchedule !== null && doctor.schedules[selectedSchedule].hospitalName}</p>
               <p className="text-sm"><span className="font-semibold">Time:</span> {selectedTimeSlot}</p>
-              <p className="text-sm"><span className="font-semibold">Consultation Fee:</span> ${selectedSchedule !== null && doctor.schedules[selectedSchedule].consultationFee}</p>
+              <p className="text-sm"><span className="font-semibold">Consultation Fee:</span> Rs. {selectedSchedule !== null && doctor.schedules[selectedSchedule].consultationFee}</p>
             </div>
 
             <Button 
